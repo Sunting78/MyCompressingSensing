@@ -39,14 +39,14 @@
 
 
 %___INPUT IMAGE___
-A = imread('cameraman.tif');
-A = A([50:99],[50:99]);
-x=double(A(:));
-%x = GPS(:,4);
+%A = imread('cameraman.tif');
+%A = A([50:99],[50:99]);
+%x=double(A(:));
+x = test(:,1);
 n = length(x);
 
 %___MEASUREMENT MATRIX___
-m = 250; % NOTE: small error still present after increasing m to 1500;
+m = 100; % NOTE: small error still present after increasing m to 1500;
 Phi = randn(m,n);
     %__ALTERNATIVES TO THE ABOVE MEASUREMENT MATRIX___ 
     %Phi = (sign(randn(m,n))+ones(m,n))/2; % micro mirror array (mma) e.g. single
@@ -100,9 +100,13 @@ for ii = 1:n
 end
 
 figure('name','Compressive sensing image reconstructions')
-subplot(1,3,1), imagesc(reshape(x,50,50)), xlabel('original'), axis image
-subplot(1,3,2), imagesc(reshape(x2,50,50)), xlabel('least squares'), axis image
-subplot(1,3,3), imagesc(reshape(x1,50,50)), xlabel('basis pursuit'), axis image
+%subplot(1,3,1), imagesc(reshape(x,50,50)), xlabel('original'), axis image
+%subplot(1,3,2), imagesc(reshape(x2,50,50)), xlabel('least squares'), axis image
+%subplot(1,3,3), imagesc(reshape(x1,50,50)), xlabel('basis pursuit'), axis image
+subplot(1,3,1),plot(x);
+subplot(1,3,2),plot(s1);
+subplot(1,3,3),plot(s2);
+
 colormap gray
 
 
